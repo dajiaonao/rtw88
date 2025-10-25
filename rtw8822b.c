@@ -983,6 +983,9 @@ static bool rtw8822b_check_rf_path(u8 antenna)
 }
 
 static int rtw8822b_set_antenna(struct rtw_dev *rtwdev,
+#if LINUX_VERSION_CODE >= KERNEL_VERSION(6, 17, 0)
+				int radio_idx,
+#endif
 				u32 antenna_tx,
 				u32 antenna_rx)
 {
@@ -2153,6 +2156,7 @@ static const struct rtw_chip_ops rtw8822b_ops = {
 	.query_phy_status	= query_phy_status,
 	.set_channel		= rtw8822b_set_channel,
 	.mac_init		= rtw8822b_mac_init,
+	.mac_postinit		= NULL,
 	.read_rf		= rtw_phy_read_rf,
 	.write_rf		= rtw_phy_write_rf_reg_sipi,
 	.set_tx_power_index	= rtw8822b_set_tx_power_index,
