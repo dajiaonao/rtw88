@@ -1,3 +1,23 @@
+My case:
+- The bluetooth does not work
+- Everytime the doogle is plugged in, it will show up as CD-ROM mode:
+```
+> lsusb
+Bus 001 Device 005: ID 0bda:1a2b Realtek Semiconductor Corp. RTL8188GU 802.11n WLAN Adapter (Driver CDROM Mode)
+```
+One need to switch the mode by
+```
+eject /dev/cdrom
+```
+Then it will appears like this
+```
+> lsusb
+Bus 001 Device 008: ID 0bda:c811 Realtek Semiconductor Corp. 802.11ac NIC
+```
+
+Then it should work.
+
+
 # rtw88 downstream 🐧
 ### This is a downstream repo with a primary purpose of supporting development, testing and maintenance for the Realtek rtw88 series of WiFi 5 drivers in the Linux kernel.
 
